@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by COPASI version 4.44 (Build 295) on 2024-10-02 14:16 with libSBML version 5.20.0. -->
+<sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2" version="4">
+  <model metaid="COPASI0" id="_0D_PCS_fit_0D" name="0D_PCS_fit_0D">
+    <annotation>
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+        <rdf:Description rdf:about="#COPASI0">
+          <dcterms:created rdf:parseType="Resource">
+            <dcterms:W3CDTF>2023-02-24T12:25:03Z</dcterms:W3CDTF>
+          </dcterms:created>
+          <dcterms:modified rdf:parseType="Resource">
+            <dcterms:W3CDTF>2023-02-24T12:25:03Z</dcterms:W3CDTF>
+          </dcterms:modified>
+        </rdf:Description>
+      </rdf:RDF>
+      <copasi:COPASI xmlns:copasi="http://www.copasi.org/static/sbml">
+        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="#COPASI0">
+            <dcterms:created>
+              <rdf:Description>
+                <dcterms:W3CDTF>2023-02-24T12:25:03Z</dcterms:W3CDTF>
+              </rdf:Description>
+            </dcterms:created>
+          </rdf:Description>
+        </rdf:RDF>
+      </copasi:COPASI>
+    </annotation>
+    <listOfFunctionDefinitions>
+      <functionDefinition id="Function_for_Efflux" name="Function for Efflux">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> PCS_C </ci>
+            </bvar>
+            <bvar>
+              <ci> Km_Efflux </ci>
+            </bvar>
+            <bvar>
+              <ci> Mem </ci>
+            </bvar>
+            <bvar>
+              <ci> Vmax_Efflux </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> Vmax_Efflux </ci>
+              <ci> PCS_C </ci>
+              <apply>
+                <divide/>
+                <cn> 1 </cn>
+                <apply>
+                  <plus/>
+                  <ci> Km_Efflux </ci>
+                  <ci> PCS_C </ci>
+                </apply>
+              </apply>
+              <ci> Mem </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Function_for_Uptake" name="Function for Uptake">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> PCS_B </ci>
+            </bvar>
+            <bvar>
+              <ci> PCS_OAT1 </ci>
+            </bvar>
+            <bvar>
+              <ci> Kf_Uptake </ci>
+            </bvar>
+            <bvar>
+              <ci> Kr_Uptake </ci>
+            </bvar>
+            <bvar>
+              <ci> Mem </ci>
+            </bvar>
+            <bvar>
+              <ci> OAT1 </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> Kf_Uptake </ci>
+                  <ci> OAT1 </ci>
+                  <ci> PCS_B </ci>
+                </apply>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <ci> Kr_Uptake </ci>
+                    <ci> PCS_OAT1 </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> Mem </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Function_for_dissociation" name="Function for dissociation">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> PCS_C </ci>
+            </bvar>
+            <bvar>
+              <ci> PCS_OAT1 </ci>
+            </bvar>
+            <bvar>
+              <ci> Kf_dissociation </ci>
+            </bvar>
+            <bvar>
+              <ci> Kr_dissociation </ci>
+            </bvar>
+            <bvar>
+              <ci> Mem </ci>
+            </bvar>
+            <bvar>
+              <ci> OAT1 </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> Kf_dissociation </ci>
+                  <ci> PCS_OAT1 </ci>
+                </apply>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <ci> Kr_dissociation </ci>
+                    <ci> OAT1 </ci>
+                    <ci> PCS_C </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> Mem </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+    </listOfFunctionDefinitions>
+    <listOfUnitDefinitions>
+      <unitDefinition id="length" name="length">
+        <listOfUnits>
+          <unit kind="metre" exponent="1" scale="0" multiplier="0.1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="area" name="area">
+        <listOfUnits>
+          <unit kind="metre" exponent="2" scale="0" multiplier="0.1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="volume" name="volume">
+        <listOfUnits>
+          <unit kind="litre" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="time" name="time">
+        <listOfUnits>
+          <unit kind="second" exponent="1" scale="-3" multiplier="60"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="substance" name="substance">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-6" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="unit_0" name="µm/s">
+        <listOfUnits>
+          <unit kind="metre" exponent="1" scale="-6" multiplier="1"/>
+          <unit kind="second" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="unit_1" name="µm">
+        <listOfUnits>
+          <unit kind="metre" exponent="1" scale="-6" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="unit_2" name="l/(µmol*s)">
+        <listOfUnits>
+          <unit kind="mole" exponent="-1" scale="-6" multiplier="1"/>
+          <unit kind="litre" exponent="1" scale="0" multiplier="1"/>
+          <unit kind="second" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="unit_3" name="1">
+        <listOfUnits>
+          <unit kind="dimensionless" exponent="0" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="unit_4" name="C/mol">
+        <listOfUnits>
+          <unit kind="mole" exponent="-1" scale="0" multiplier="1"/>
+          <unit kind="coulomb" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="unit_5" name="zAvogadro">
+        <listOfUnits>
+          <unit kind="avogadro" exponent="1" scale="-21" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="unit_6" name="1/s">
+        <listOfUnits>
+          <unit kind="second" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="unit_7" name="µmol/l">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-6" multiplier="1"/>
+          <unit kind="litre" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="unit_8" name="100*µmol/(m²*s)">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-6" multiplier="100"/>
+          <unit kind="metre" exponent="-2" scale="0" multiplier="1"/>
+          <unit kind="second" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment id="Cell_Monolayer" name="Cell Monolayer" spatialDimensions="3" size="3.2e-07" constant="true"/>
+      <compartment id="Well" name="Well" spatialDimensions="3" size="0.0001" constant="true"/>
+      <compartment id="Mem" name="Mem" spatialDimensions="2" size="0.0032" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="PCS_B" name="PCS_B" compartment="Well" initialConcentration="10" boundaryCondition="false" constant="false"/>
+      <species id="OAT1" name="OAT1" compartment="Mem" initialConcentration="0.190961960063713" boundaryCondition="false" constant="false"/>
+      <species id="PCS_C" name="PCS_C" compartment="Cell_Monolayer" initialConcentration="0" boundaryCondition="false" constant="false"/>
+      <species id="PCS_OAT1" name="PCS_OAT1" compartment="Mem" initialConcentration="0" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="Vmax" name="Vmax" value="10" units="unit_0" constant="true"/>
+      <parameter id="v_u" name="v_u" value="1" constant="true"/>
+      <parameter id="v_b" name="v_b" value="0.5" constant="true"/>
+      <parameter id="s_linear_density" name="s_linear_density" value="5" constant="false"/>
+      <parameter id="v_u_new" name="v_u_new" value="0.3" constant="true"/>
+      <parameter id="width" name="width" value="30" units="unit_1" constant="true"/>
+      <parameter id="L" name="L" value="20" units="unit_1" constant="true"/>
+      <parameter id="th" name="th" value="3" units="unit_1" constant="true"/>
+      <parameter id="mu" name="mu" value="0.1" constant="true"/>
+      <parameter id="sigma" name="sigma" value="0.5" constant="true"/>
+      <parameter id="s_skew_density" name="s_skew_density" value="0.0886988196330047" constant="false"/>
+      <parameter id="Kf_up" name="Kf_up" value="1.75e-05" units="unit_2" constant="true"/>
+      <parameter id="n" name="n" value="1" constant="true"/>
+      <parameter id="oat_tx" name="oat_tx" value="0" constant="false">
+        <annotation>
+          <vcell:OutputFunction xmlns:vcell="http://sourceforge.net/projects/vcell" vcell:VariableType="Nonspatial"/>
+        </annotation>
+      </parameter>
+      <parameter id="oat1" name="oat1" value="38192392.0127427" constant="false">
+        <annotation>
+          <vcell:OutputFunction xmlns:vcell="http://sourceforge.net/projects/vcell" vcell:VariableType="Nonspatial"/>
+        </annotation>
+      </parameter>
+      <parameter id="Tx_B_molecules" name="Tx_B_molecules" value="2.4088e+36" constant="false">
+        <annotation>
+          <vcell:OutputFunction xmlns:vcell="http://sourceforge.net/projects/vcell" vcell:VariableType="Nonspatial"/>
+        </annotation>
+      </parameter>
+      <parameter id="Tx_U_molecules" name="Tx_U_molecules" value="0" constant="false">
+        <annotation>
+          <vcell:OutputFunction xmlns:vcell="http://sourceforge.net/projects/vcell" vcell:VariableType="Nonspatial"/>
+        </annotation>
+      </parameter>
+      <parameter id="Total" name="Total" value="2.4088e+36" constant="false">
+        <annotation>
+          <vcell:OutputFunction xmlns:vcell="http://sourceforge.net/projects/vcell" vcell:VariableType="Nonspatial"/>
+        </annotation>
+      </parameter>
+      <parameter id="Voltage_Mem" name="Voltage_Mem" value="0" constant="true"/>
+      <parameter id="_PI_" name="_PI_" value="3.14159265358979" units="unit_3" constant="true"/>
+      <parameter id="_F_" name="_F_" value="96485.3321" units="unit_4" constant="true"/>
+      <parameter id="KMOLE" name="KMOLE" value="0.00166053878316273" units="unit_5" constant="true"/>
+      <parameter id="Kf_Uptake" name="Kf_Uptake" value="1.75e-05" units="unit_2" constant="true"/>
+      <parameter id="Kr_Uptake" name="Kr_Uptake" value="0" units="unit_6" constant="true"/>
+      <parameter id="Km_Efflux" name="Km_Efflux" value="69" units="unit_7" constant="true"/>
+      <parameter id="Vmax_Efflux" name="Vmax_Efflux" value="0.000388864972241047" units="unit_8" constant="false"/>
+      <parameter id="Kf_dissociation" name="Kf_dissociation" value="0.000448" units="unit_6" constant="true"/>
+      <parameter id="Kr_dissociation" name="Kr_dissociation" value="0" units="unit_2" constant="true"/>
+      <parameter id="quantity" name="quantity" value="0" constant="true"/>
+    </listOfParameters>
+    <listOfInitialAssignments>
+      <initialAssignment symbol="OAT1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn type="e-notation"> 1 <sep/> -5 </cn>
+            <cn> 11500000 </cn>
+            <ci> KMOLE </ci>
+          </apply>
+        </math>
+      </initialAssignment>
+    </listOfInitialAssignments>
+    <listOfRules>
+      <assignmentRule variable="s_linear_density">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn> 1.5 </cn>
+            <ci> v_u </ci>
+            <apply>
+              <divide/>
+              <cn> 1 </cn>
+              <ci> v_u_new </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="Tx_B_molecules">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> PCS_B </ci>
+            <cn> 400000000000 </cn>
+            <cn type="e-notation"> 6.022 <sep/> 23 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="oat1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> OAT1 </ci>
+            <cn> 200000000 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="Tx_U_molecules">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> PCS_C </ci>
+            <cn> 400000000000 </cn>
+            <cn type="e-notation"> 6.022 <sep/> 23 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="Vmax_Efflux">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn type="e-notation"> 1 <sep/> -5 </cn>
+            <cn> 23418 </cn>
+            <ci> KMOLE </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="s_skew_density">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <exp/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <plus/>
+                      <apply>
+                        <ln/>
+                        <ci> v_u_new </ci>
+                      </apply>
+                      <apply>
+                        <minus/>
+                        <ci> mu </ci>
+                      </apply>
+                    </apply>
+                    <cn> 2 </cn>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <cn> 1 </cn>
+                    <apply>
+                      <times/>
+                      <cn> 2 </cn>
+                      <apply>
+                        <power/>
+                        <ci> sigma </ci>
+                        <cn> 2 </cn>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+            <apply>
+              <divide/>
+              <cn> 1 </cn>
+              <apply>
+                <times/>
+                <ci> v_u_new </ci>
+                <ci> sigma </ci>
+                <apply>
+                  <power/>
+                  <apply>
+                    <times/>
+                    <cn> 2 </cn>
+                    <ci> _PI_ </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <cn> 1 </cn>
+                    <cn> 2 </cn>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="oat_tx">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> PCS_OAT1 </ci>
+            <cn> 200000000 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="Total">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> oat_tx </ci>
+            <ci> Tx_B_molecules </ci>
+            <ci> Tx_U_molecules </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction id="Uptake" name="Uptake" reversible="true">
+        <listOfReactants>
+          <speciesReference species="OAT1" stoichiometry="1"/>
+          <speciesReference species="PCS_B" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PCS_OAT1" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci> Function_for_Uptake </ci>
+              <ci> PCS_B </ci>
+              <ci> PCS_OAT1 </ci>
+              <ci> Kf_Uptake </ci>
+              <ci> Kr_Uptake </ci>
+              <ci> Mem </ci>
+              <ci> OAT1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Efflux" name="Efflux" reversible="true">
+        <listOfReactants>
+          <speciesReference species="PCS_C" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PCS_B" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci> Function_for_Efflux </ci>
+              <ci> PCS_C </ci>
+              <ci> Km_Efflux </ci>
+              <ci> Mem </ci>
+              <ci> Vmax_Efflux </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="dissociation" name="dissociation" reversible="true">
+        <listOfReactants>
+          <speciesReference species="PCS_OAT1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="OAT1" stoichiometry="1"/>
+          <speciesReference species="PCS_C" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci> Function_for_dissociation </ci>
+              <ci> PCS_C </ci>
+              <ci> PCS_OAT1 </ci>
+              <ci> Kf_dissociation </ci>
+              <ci> Kr_dissociation </ci>
+              <ci> Mem </ci>
+              <ci> OAT1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>
