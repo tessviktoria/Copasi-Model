@@ -3,6 +3,6 @@ pandas
 matplotlib
 jupyterlab
 scipy
-libsbml
+python-libsbml
 COPASIpy
 os
