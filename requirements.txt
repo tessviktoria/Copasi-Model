@@ -4,5 +4,3 @@ matplotlib
 jupyterlab
 scipy
 python-libsbml
-COPASIpy
-os
